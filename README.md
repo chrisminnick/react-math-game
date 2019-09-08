@@ -16,3 +16,4 @@ game for react class
 10. Open your mathificent directory in your code editor.
 11. Open src/App.js for editing.
 12. Take a look at the structure of this file. It imports the React library, and then contains a function with a return statement. This function creates a component. The job of a component is to output a piece of the user interface.
+13. 
