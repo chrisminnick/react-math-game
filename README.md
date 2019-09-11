@@ -4,18 +4,18 @@ game for react class
 ## Steps
 
 1. Create a new empty directory named react-math-game
-2. Open a terminal emulator and make react-math-game the working directory
-3. type node -v to test whether you already have node installed.
-4. If you do have it installed correctly, you'll get a version number back that will be in the format #.#.#. The first digit of this version number should be 10 or higher. If it is, skip to step 6. If it isn't you'll need to upgrade node. To upgrade node, go to https://nodejs.org and click the link to download the current LTS version. Double click the downloaded file and follow the instructions to install it.
-5. If you had to upgrade or install Node, close and restart your terminal application and type node -v to confirm that the version is now higher than 10.
-6. In your terminal, type npm -v. If the number you get back is higher than 5.2, skip to step 8.
-7. If your npm version number is lower than 5.2, type npm install npm -g in your terminal.
-8. Type npx create-react-app mathificent to create a starter project named "mathificent". The depedencies will be downloaded and after a while you'll have a new React project.
-9. Type cd mathificent followed by npm start. A web browser window will open and you'll see the default create-react-app starter project. <img src="default-create-react-app-project.png">
-10. Open your mathificent directory in your code editor.
-11. Open src/App.js for editing.
-12. Take a look at the structure of this file. It imports the React library, and then contains a function with a return statement. This function creates a component. The job of a component is to output a piece of the user interface.
-13. Find the <header> and </header> tags and delete everything between them except fror the img tag. Your App.js file should now like this:
+1. Open a terminal emulator and make react-math-game the working directory
+1. type node -v to test whether you already have node installed.
+1. If you do have it installed correctly, you'll get a version number back that will be in the format #.#.#. The first digit of this version number should be 10 or higher. If it is, skip to step 6. If it isn't you'll need to upgrade node. To upgrade node, go to https://nodejs.org and click the link to download the current LTS version. Double click the downloaded file and follow the instructions to install it.
+1. If you had to upgrade or install Node, close and restart your terminal application and type node -v to confirm that the version is now higher than 10.
+1. In your terminal, type npm -v. If the number you get back is higher than 5.2, skip to step 8.
+1. If your npm version number is lower than 5.2, type npm install npm -g in your terminal.
+1. Type npx create-react-app mathificent to create a starter project named "mathificent". The depedencies will be downloaded and after a while you'll have a new React project.
+1. Type cd mathificent followed by npm start. A web browser window will open and you'll see the default create-react-app starter project. <img src="default-create-react-app-project.png">
+1. Open your mathificent directory in your code editor.
+1. Open src/App.js for editing.
+1. Take a look at the structure of this file. It imports the React library, and then contains a function with a return statement. This function creates a component. The job of a component is to output a piece of the user interface.
+1. Find the <header> and </header> tags and delete everything between them except fror the img tag. Your App.js file should now like this:
 <pre>import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -32,12 +32,12 @@ function App() {
 }
 
 export default App;</pre>
-14. Insert an <h1> element below the image, containing the title of our app, "Mathificent."
+1. Insert an <h1> element below the image, containing the title of our app, "Mathificent."
 <pre><h1>Mathificent</h1></pre>
-15. Return to your web browser where the app is open and running. If you did everything correctly, you'll see the following. <img src="first-text-changes.png">. If you see an error message, return to your App.js file and make sure that it matches the solution exactly.
+1. Return to your web browser where the app is open and running. If you did everything correctly, you'll see the following. <img src="first-text-changes.png">. If you see an error message, return to your App.js file and make sure that it matches the solution exactly.
 If all React did was to use JavaScript to output HTML, it wouldn't be very useful. What makes React useful is that allows you to break your user interface into components which can be reused. So, let's make some components!
-16. Create a new file in the src directory named Header.js. Note that the name of this file starts with a capital H. In React, the names of custom components always start with a capital letter.
-16. Inside this new file, import React and then define a function named Header.
+1. Create a new file in the src directory named Header.js. Note that the name of this file starts with a capital H. In React, the names of custom components always start with a capital letter.
+1. Inside this new file, import React and then define a function named Header.
 <pre>import React from 'react';
 
 
@@ -47,10 +47,10 @@ function Header() {
     )
 }
 </pre>
-17. After the function definition, export this function so that it becomes a JavaScript module that can be imported into other JavaScript files.
+1. After the function definition, export this function so that it becomes a JavaScript module that can be imported into other JavaScript files.
 <pre>export default Header;</pre>
-18. Inside the return statement of the function, type or copy and paste the code for the header navigation for our app.
-<pre><header>
+1. Inside the return statement of the function, type or copy and paste the code for the header navigation for our app.
+``<header>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">Mathificent</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText">
@@ -67,40 +67,39 @@ function Header() {
         </ul>
         </div>
     </nav>
-    </header></pre>
-19. Save Header.js and return to your browser. Notice that nothing has changed. Right now, Header.js isn't imported into the Rest of your React app, so it's not doing anything. Let's fix that.
-20. Open App.js in your code editor.
-21. Near the beginning of the document, underneath the 3 other import statements, add another one to import Header.js.
+    </header>``
+1. Save Header.js and return to your browser. Notice that nothing has changed. Right now, Header.js isn't imported into the Rest of your React app, so it's not doing anything. Let's fix that.
+1. Open App.js in your code editor.
+1. Near the beginning of the document, underneath the 3 other import statements, add another one to import Header.js.
 <pre>import Header from './Header';</pre>
 Notice that when we import the Header custom component, we need to use './' before the file name and we don't need to type the '.js' at the end of the file name.
-22. Inside the return statement, replace the existing <header> element with your new custom component, <Header>. To do this, just delete everything from the opening <header> tag to the closing </header> tag and type in a single self-closing <Header /> tag.
+1. Inside the return statement, replace the existing <header> element with your new custom component, <Header>. To do this, just delete everything from the opening <header> tag to the closing </header> tag and type in a single self-closing <Header /> tag.
 <pre><div className="App">
     <Header />
 </div></pre>
-23. Because the app no longer uses the React logo, delete the import of the logo from App.js.
-24. Below the <Header /> tag, re-type the <h1> element containing the title of the app.
+1. Because the app no longer uses the React logo, delete the import of the logo from App.js.
+1. Below the <Header /> tag, re-type the <h1> element containing the title of the app.
 <pre><h1>Mathificent</h1></pre>
-24. Return to your web browser to view your app so far. It should look something like this: <img src="first-component.png">
-25. To add style to the app, we'll need to install the Bootstrap library. Open the index.html in the Public directory, and put the following link tag between the <head> tag and the </head> tag:
+1. Return to your web browser to view your app so far. It should look something like this: <img src="first-component.png">
+1. To add style to the app, we'll need to install the Bootstrap library. Open the index.html in the Public directory, and put the following link tag between the <head> tag and the </head> tag:
 <pre><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></pre>
-26. Return to your web browser. You should now see a responsive navigation bar, like the following: <img src="bootstrap-added.png">
-27.
-28. Next we'll make the footer component. Start by making a new file named Footer.js in the src directory.
-29. Import React, define a function named Footer, and export the function just as you did with the Header component.
-30. In the return statement of Footer, enter the following:
+1. Return to your web browser. You should now see a responsive navigation bar, like the following: <img src="bootstrap-added.png">
+1. Next we'll make the footer component. Start by making a new file named Footer.js in the src directory.
+1. Import React, define a function named Footer, and export the function just as you did with the Header component.
+1. In the return statement of Footer, enter the following:
 <pre><footer className="navbar fixed-bottom bg-dark">
         <a href="https://www.webucator.com">Copyright &copy; Webucator</a>
     </footer></pre>
-31. Import the Footer component into App.js and put the new custom Footer component at the end of the return statement, before the </div> tag. Your return statement in App.js should now look like this:
+1. Import the Footer component into App.js and put the new custom Footer component at the end of the return statement, before the </div> tag. Your return statement in App.js should now look like this:
 <pre>
     <div className="App">
       <Header />
       <h1>Mathificent</h1>
       <Footer />
 </div></pre>
-32. If you app isn't already running, cd to your mathificent directory and type npm run start and then open your browser to http://localhost:3000 (if it doesn't automatically open). You should now have a header, main content of the page with the h1 element, and a footer.
-33. Take a look at the finished Mathificent program and think about how you might split up the main content of the app into components.
-34. Here's one way that the homepage could be split into components. (insert image). The first step in the React development process is to create static (meaning without any functionality) version of the app. Create a new functional component for each of the unique components in the following outline.
+1. If you app isn't already running, cd to your mathificent directory and type npm run start and then open your browser to http://localhost:3000 (if it doesn't automatically open). You should now have a header, main content of the page with the h1 element, and a footer.
+1. Take a look at the finished Mathificent program and think about how you might split up the main content of the app into components.
+1. Here's one way that the homepage could be split into components. (insert image). The first step in the React development process is to create static (meaning without any functionality) version of the app. Create a new functional component for each of the unique components in the following outline.
 <pre>
 App
   Header
@@ -110,7 +109,7 @@ App
     PlayButton
   Footer
 </pre>
-35. In the return statement for each component, put a placeholder element containing the name of the component for now. For example, here's what the SelectInput component should look like:
+1. In the return statement for each component, put a placeholder element containing the name of the component for now. For example, here's what the SelectInput component should look like:
 <pre>import React from 'react';
 function SelectInput(){
     return(
@@ -118,13 +117,13 @@ function SelectInput(){
     )
 }
 export default SelectInput;</pre>
-36. Now that you have all the components, it's time to put them together in the right order. Think about the heirarchy of components in your app. The App component contains Header, Main, and Footer. Main contains 2 instances of SelectInput, 1 ScoreOutputBox, and PlayButton.
-37. Import the correct components into App.js and Main.js and then modify the return statements of these two components to include the correct sub-components (also known as "child" components). When you're done, it should look like the following in your browser:
-38. Make the PlayButton component contain a button using this code:
+1. Now that you have all the components, it's time to put them together in the right order. Think about the heirarchy of components in your app. The App component contains Header, Main, and Footer. Main contains 2 instances of SelectInput, 1 ScoreOutputBox, and PlayButton.
+1. Import the correct components into App.js and Main.js and then modify the return statements of these two components to include the correct sub-components (also known as "child" components). When you're done, it should look like the following in your browser:
+1. Make the PlayButton component contain a button using this code:
 <pre>
 <button class="btn btn-success">Play!</button>
 </pre>
-39. Code a static version of the ScoreOutputBox component, like this:
+1. Code a static version of the ScoreOutputBox component, like this:
 <pre>
         <div className="w-25" style={{margin:"0 auto"}}>
             <ul>
@@ -133,7 +132,7 @@ export default SelectInput;</pre>
             </ul>
         <p><b>Can you do better?</b></p>
         </div></pre>
-40. Code the select dropdowns using static options and labels for now. We'll make them dynamic shortly.
+1. Code the select dropdowns using static options and labels for now. We'll make them dynamic shortly.
 <pre>
 <div><label>Select Label
 <input type="select">
@@ -147,30 +146,30 @@ const operations = ["Addition",
                       "Multiplication",
                       "Division",
                       "Subtraction"];
-42. Pass this array to the first SelectInput component using an attribute. Remember that since operations is a variable, you need to surround it with curly braces.
+1. Pass this array to the first SelectInput component using an attribute. Remember that since operations is a variable, you need to surround it with curly braces.
             <SelectInput label = "Operation" values = {operations} />
-43. Create an empty array inside the SelectInput component (also outside of the return statement) that will hold the list of numbers that we'll use to populate the maximum number dropdown.
+1. Create an empty array inside the SelectInput component (also outside of the return statement) that will hold the list of numbers that we'll use to populate the maximum number dropdown.
     let numbers = [];
-44. Use a for loop to create an array of the numbers from 0 to 100.
+1. Use a for loop to create an array of the numbers from 0 to 100.
     for (let number = 0;number<=100;number++){
         numbers.push(number);
     }
-45. Modify your two SelectInput elements to pass the select dropdown values as well as labels to them.
+1. Modify your two SelectInput elements to pass the select dropdown values as well as labels to them.
             <SelectInput label = "Operation" values = {operations} />
             <SelectInput label = "Maximum Number" values = {numbers} />
-46. Open SelectInput.js in your code editor.
-47. Pass props into SelectInput as a parameter.
+1. Open SelectInput.js in your code editor.
+1. Pass props into SelectInput as a parameter.
 function SelectInput(props){
     ...
 }
-48. Outside of the return statement in SelectInput, use the Array.map method to generate a list of option elements. This same statement will be used by both of our dropdown boxes, as well as any future ones that we might add.
+1. Outside of the return statement in SelectInput, use the Array.map method to generate a list of option elements. This same statement will be used by both of our dropdown boxes, as well as any future ones that we might add.
     const values = props.values;
     const selectOptions = values.map((value)=>
         <option value={value} key={value.toString()}>{value}</option>
     );
-49. Replace the hard-coded form field label with the value of the label attribute.
+1. Replace the hard-coded form field label with the value of the label attribute.
         <div><label>{props.label}
-50. Replace the hard-coded option element with the array of option elements that you created in step 32.
+1. Replace the hard-coded option element with the array of option elements that you created in step 32.
         <div><label>{props.label}
             <select id="operation" className="form-control">
                 {selectOptions}
