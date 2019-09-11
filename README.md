@@ -124,7 +124,6 @@ export default SelectInput;</pre>
 <pre>
 <button class="btn btn-success">Play!</button>
 </pre>
-<<<<<<< HEAD
 23. Code a static version of the ScoreOutputBox component, like this:
 <pre>
         <div className="w-25" style={{margin:"0 auto"}}>
@@ -179,7 +178,6 @@ Next Steps
 - Make the game screen
 - Make the game work
 - 
-=======
 39. Code a static version of the score, like this:
 <pre>
 <div>
@@ -197,6 +195,5 @@ Next Steps
 </input>
 </label>
 </div></pre>
->>>>>>> a6195ab653a4ca364f59ee0b7232723094d475f1
 
 
