@@ -4,10 +4,18 @@ import ScoreOutputBox from './ScoreOutputBox';
 import PlayButton from './PlayButton';
 
 function Main(){
+    const operations = ["Addition",
+                      "Multiplication",
+                      "Division",
+                      "Subtraction"];
+    let numbers = [];
+    for (let number = 0;number<=100;number++){
+        numbers.push(number);
+    }
     return(
         <div>
-            <SelectInput />
-            <SelectInput />
+            <SelectInput label = "Operation" values = {operations} />
+            <SelectInput label = "Maximum Number" values = {numbers} />
             <ScoreOutputBox />
             <PlayButton />
         </div>

@@ -1,9 +1,13 @@
 import React from 'react';
-function SelectInput(){
+function SelectInput(props){
+    const values = props.values;
+    const selectOptions = values.map((value)=>
+        <option value={value} key={value.toString()}>{value}</option>
+    );
     return(
-        <div><label>Select Label
+        <div><label>{props.label}
             <select id="operation" className="form-control">
-                <option name="sample value">Sample Value</option>
+                {selectOptions}
             </select>
             </label>
         </div>

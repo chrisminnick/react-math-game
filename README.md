@@ -55,22 +55,59 @@ export default SelectInput;</pre>
 <pre>
 <button class="btn btn-success">Play!</button>
 </pre>
-23. Code a static version of the score, like this:
+23. Code a static version of the ScoreOutputBox component, like this:
 <pre>
-<div>
-<ul>
-    <li>The record for multiplacation with a high number of 10 is 42.</li>
-    <li>Your personal record is 38.</li>
-</ul>
-<p><b>Can you do better?</b></p>
-</div>
-24. Code the select dropdowns using static options and labels for now. We'll make them dynamic shortly.
-<pre>
-<div><label>Select Label
-<input type="select">
-    <option name="sample value">Sample Value</option>
-</input>
-</label>
-</div></pre>
+        <div className="w-25" style={{margin:"0 auto"}}>
+            <ul>
+                <li>The record for multiplacation with a high number of 10 is 42.</li>
+                <li>Your personal record is 38.</li>
+            </ul>
+        <p><b>Can you do better?</b></p>
+        </div></pre>
+24. Next, we'll pass props between components. Open Main.js in your code editor.
+25. Inside the function, but before the return statement, create an array to hold the possible operations.
+const operations = ["Addition",
+                      "Multiplication",
+                      "Division",
+                      "Subtraction"];
+26. Pass this array to the first SelectInput component using an attribute. Remember that since operations is a variable, you need to surround it with curly braces.
+            <SelectInput label = "Operation" values = {operations} />
+27. Create an empty array inside the SelectInput component (also outside of the return statement) that will hold the list of numbers that we'll use to populate the maximum number dropdown.
+    let numbers = [];
+28. Use a for loop to create an array of the numbers from 0 to 100.
+    for (let number = 0;number<=100;number++){
+        numbers.push(number);
+    }
+29. Modify your two SelectInput elements to pass the select dropdown values as well as labels to them.
+            <SelectInput label = "Operation" values = {operations} />
+            <SelectInput label = "Maximum Number" values = {numbers} />
+30. Open SelectInput.js in your code editor.
+31. Pass props into SelectInput as a parameter.
+function SelectInput(props){
+    ...
+}
+32. Outside of the return statement in SelectInput, use the Array.map method to generate a list of option elements. This same statement will be used by both of our dropdown boxes, as well as any future ones that we might add.
+    const values = props.values;
+    const selectOptions = values.map((value)=>
+        <option value={value} key={value.toString()}>{value}</option>
+    );
+33. Replace the hard-coded form field label with the value of the label attribute.
+        <div><label>{props.label}
+34. Replace the hard-coded option element with the array of option elements that you created in step 32.
+        <div><label>{props.label}
+            <select id="operation" className="form-control">
+                {selectOptions}
+            </select>
+            </label>
+        </div>
+
+Next Steps
+- Organize the app into folders
+- Add state
+- Update the state with hooks?
+- Add the routes
+- Make the game screen
+- Make the game work
+- 
 
 
