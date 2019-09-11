@@ -38,6 +38,7 @@ game for react class
 If all React did was to use JavaScript to output HTML, it wouldn't be very useful. What makes React useful is that allows you to break your user interface into components which can be reused. So, let's make some components!
 1. Create a new file in the src directory named Header.js. Note that the name of this file starts with a capital H. In React, the names of custom components always start with a capital letter.
 1. Inside this new file, import React and then define a function named Header.
+
     import React from 'react';
 
 
