@@ -14,13 +14,13 @@ function Main(props){
     }
     return(
         <div>
-            <SelectInput currentOperation = {props.operation} 
-                         setOperation = {props.setOperation}
+            <SelectInput currentValue = {props.operation} 
+                         setCurrentValue = {props.setOperation}
                          label = "Operation" 
                          values = {operations} />
 
-            <SelectInput maxNumber = {props.maxNumber}
-                         setMaxNumber = {props.setMaxNumber}
+            <SelectInput currentValue = {props.maxNumber}
+                         setCurrentValue = {props.setMaxNumber}
                          label = "Maximum Number" 
                          values = {numbers} />
                          

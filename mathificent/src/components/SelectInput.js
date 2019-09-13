@@ -7,7 +7,7 @@ function SelectInput(props){
     return(
         <div><label>{props.label}
             <select defaultValue = {props.currentValue} 
-                    onChange = {props.setCurrentValue}
+                    onChange = {(e)=>props.setCurrentValue(e.target.value)}
                     id="operation" 
                     className="form-control">
                 {selectOptions}
