@@ -3,7 +3,7 @@ import SelectInput from './SelectInput';
 import ScoreOutputBox from './ScoreOutputBox';
 import PlayButton from './PlayButton';
 
-function Main(){
+function Main(props){
     const operations = ["Addition",
                       "Multiplication",
                       "Division",
@@ -14,8 +14,16 @@ function Main(){
     }
     return(
         <div>
-            <SelectInput label = "Operation" values = {operations} />
-            <SelectInput label = "Maximum Number" values = {numbers} />
+            <SelectInput currentOperation = {props.operation} 
+                         setOperation = {props.setOperation}
+                         label = "Operation" 
+                         values = {operations} />
+
+            <SelectInput maxNumber = {props.maxNumber}
+                         setMaxNumber = {props.setMaxNumber}
+                         label = "Maximum Number" 
+                         values = {numbers} />
+                         
             <ScoreOutputBox />
             <PlayButton />
         </div>

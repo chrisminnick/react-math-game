@@ -6,7 +6,10 @@ function SelectInput(props){
     );
     return(
         <div><label>{props.label}
-            <select id="operation" className="form-control">
+            <select defaultValue = {props.currentValue} 
+                    onChange = {props.setCurrentValue}
+                    id="operation" 
+                    className="form-control">
                 {selectOptions}
             </select>
             </label>

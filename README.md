@@ -223,9 +223,72 @@ If all React did was to use JavaScript to output HTML, it wouldn't be very usefu
                 </label>
             </div>
     ```
+As your app starts to get more complex, it can be helpful to start organizing it into subdirectories, rather than having everything in the same location as we have now.
+1. Create a new directory inside src and name it <code>components</code>.
+1. In your code editor, drag the following files into the new <code>components</code> directory.
+    Footer.js
+    Header.js
+    Main.js
+    PlayButton.js
+    ScoreOutputBox.js
+    SelectInput.js
+1. Create another directory inside src and name it <code>containers</code>. Containers are components whose purpose to hold other components, manage state, and pass data to presentational components.
+1. In your code editor, drag App.js, App.css, and App.test.js into the containers directory.
+1. Open App.js in your code editor and update the import statements to correctly import the subcomponents, like this:
+    ```
+    import Header from '../components/Header';
+    import Footer from '../components/Footer';
+    import Main from '../components/Main';
+    ```
+1. Open index.js in your code editor and update the path to App.js in the import.
+    ```
+    import App from './containers/App';
+    ```
+1. If it's not already running, start up your development server by entering <code>npm start</code> in your terminal. Your application should open in a web browser without displaying errors.
+    Next, we'll add state to the application. State is data in your application that changes over time. In Mathificent, the initial screen with the operation and maximum number dropdowns has two pieces of state that need to be tracked and that can change over time. These are the currently selected operation and the currently selected maximum number. We'll use a technique called React Hooks to create two state variables and the functions for updating them.
+1. Inside App.js, modify the first import statement (the one that imports React) to also import a function called <code>useState</code>. When you import a single function from a file containing multiple functions, you can use curly braces around the name of the function. Here's what your new React import should look like:
+    ```
+    import React,{useState} from 'react';
+    ```
+1. Inside the function definition for the App component, create a new state variable called operation and a function for modifying that variable. Pass a 0 into the useState function to set the initial value of the operation variable to "addition".
+    ```
+    const [operation, setOperation] = useState('addition');
+    ```
+1. Next, use the same technique to create a state variable named maxNumber and a function called setMaxNumber. Set the default value to 0.
+    ```
+    const [maxNumber, setMaxNumber] = useState(0);
+    ```
+1. Inside App.js, pass all of the state variables and functions to the Main component:
+    ```
+    <Main {...state} />
+    ```
+1. Update the Main function component to receive props as a parameter.
+```
+    function Main(props){
+```
+1. Pass the correct props variables and functions to the SelectInput components.
+function Main(props){
+    ```
+    <SelectInput currentValue = {props.operation} 
+                 setValue = {props.setOperation}
+                 label = "Operation" 
+                 values = {operations} />
+
+    <SelectInput currentValue = {props.maxNumber}
+                 setValue = {props.setMaxNumber}
+                 label = "Maximum Number" 
+                 values = {numbers} />
+    ```
+1. Inside the SelectInput component, set the default value of the select input and use an onChange handler to update the state when a the user selects a different dropdown item.
+    ```
+    <select defaultValue = {props.currentValue} 
+        onChange = {props.setCurrentValue}
+        id="operation" 
+        className="form-control">
+    ```
+1. In App.js, output the the value of both the currently selected operation and the maximum number, so that we can test whether the state is being updated correctly.
 
 Next Steps
-- Organize the app into folders
 - Add state
 - Update the state with hooks?
 - Add the routes
