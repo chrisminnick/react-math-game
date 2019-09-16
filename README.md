@@ -266,9 +266,9 @@ As your app starts to get more complex, it can be helpful to start organizing it
           setMaxNumber = {setMaxNumber} />
     ```
 1. Update the Main function component to receive props as a parameter.
-```
-    function Main(props){
-```
+    ```
+        function Main(props){
+    ```
 1. Pass the correct props variables and functions to the SelectInput components.
 function Main(props){
     ```
@@ -373,11 +373,49 @@ The next thing we need to do is to make the button change the route to the game 
     ```
 Congratulations! You now have routing set up, and we're ready to implement the actual logic of the game.
 
+Here's what the game will look like when it's complete:
+
+Can you identify from looking at this screenshot which individual components we'll need to build? We'll need the number buttons, the clear button (which might eventually be the same component that we use for the number buttons), the score output, and the timer.
+1. Create a NumberButton component, a ClearButton component, a Score component, and a Timer component and just put placeholder text into each for now.
+1. Include each of these new components into Game.
+1. In the return statement of Game, place a Timer, Score, 10 NumberButtons, and a Clear button. Use <br /> elements to create line breaks in the correct places.
+    ```
+    <div>
+        <Score />
+        <Timer /><br />
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br/>
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br />
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br />
+        <NumberButton />
+        <NumberButton />
+        <ClearButton />
+
+        <Link className="btn btn-success" to="/">Change Game</Link>
+    </div>
+    ```
+Your app should now look something like the following:
+<img src="start-of-game.png">
+1. Make the NumberButton component render a button and accept a prop named value:
+    ```
+    <button className="btn btn-success">
+            {props.value}
+    </button>
+    ```
+1. Make the ClearButton component output a button:
+    ```
+    <button className="btn btn-success">
+            Clear
+    </button>
+    ```
 
 Next Steps
-- Add state
-- Update the state with hooks?
-- Add the routes
+
 - Make the game screen
 - Make the game work
 - 
