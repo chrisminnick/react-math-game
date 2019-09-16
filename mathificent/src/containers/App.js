@@ -1,8 +1,10 @@
 import React,{useState} from 'react';
 import './App.css';
+import { Route } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
+import Game from '../components/Game';
 
 function App() {
   const [operation, setOperation] = useState('addition');
@@ -16,10 +18,20 @@ function App() {
         <li>Current operation: {operation}</li>
         <li>Current maxNumber: {maxNumber}</li>
       </ul>
-      <Main operation = {operation}
-            setOperation = {setOperation}
-            maxNumber = {maxNumber}
-            setMaxNumber = {setMaxNumber} />
+      <Route exact path="/"
+        render={()=>{
+          return(<Main  operation = {operation}
+                        setOperation = {setOperation}
+                        maxNumber = {maxNumber}
+                        setMaxNumber = {setMaxNumber} 
+                  />);}
+                } />
+      <Route path="/play"
+        render={()=>{
+          return(<Game  operation = {operation}
+                        maxNumber = {maxNumber}
+                  />);}
+                } />
       
       <Footer />
     </div>

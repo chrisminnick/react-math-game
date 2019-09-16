@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 function PlayButton(){
     return(
-    <button className="btn btn-success">Play!</button>
+    <Link className="btn btn-success" to="/play">Play!</Link>
     )
 }
 export default PlayButton;
