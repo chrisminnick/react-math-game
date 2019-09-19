@@ -254,13 +254,16 @@ As your app starts to get more complex, it can be helpful to start organizing it
     ```
     const [operation, setOperation] = useState('addition');
     ```
-1. Next, use the same technique to create a state variable named maxNumber and a function called setMaxNumber. Set the default value to 0.
+1. The useState function returns two values when it's called: a state variable, and the function for modifying that variable. Because we know this, we can use Next, use the same technique to create a state variable named maxNumber and a function called setMaxNumber. Set the default value to 0.
     ```
     const [maxNumber, setMaxNumber] = useState(0);
     ```
 1. Inside App.js, pass all of the state variables and functions to the Main component:
     ```
-    <Main {...state} />
+    <Main operation = {operation}
+          setOperation = {setOperation}
+          maxNumber = {maxNumber}
+          setMaxNumber = {setMaxNumber} />
     ```
 1. Update the Main function component to receive props as a parameter.
     ```
@@ -282,11 +285,134 @@ function Main(props){
 1. Inside the SelectInput component, set the default value of the select input and use an onChange handler to update the state when a the user selects a different dropdown item.
     ```
     <select defaultValue = {props.currentValue} 
-        onChange = {props.setCurrentValue}
+        onChange = {(e)=>props.setCurrentValue(e.target.value)}
         id="operation" 
         className="form-control">
     ```
 1. In App.js, output the the value of both the currently selected operation and the maximum number, so that we can test whether the state is being updated correctly.
+
+Next, we'll add routing to the app. Routing refers to the ability to change what displays in the browser based on the current value of the browser location property.
+
+The location property of the browser is how the browser tracks the current web page being viewed. However, with JavaScript "single page" applications, the actual URL of the web page is always the same (index.html in our case), so we can use the location property to determine which components are mounted at any one time, without needing to download another html file from the server.
+
+1. Install React Router with the following command:
+    ```
+    npm install react-router-dom --save
+    ```
+1. Use the following import statement to import the necessary components into App.js
+    ```
+    import {Route} from 'react-router-dom';
+    ```
+1. Open index.js and import BrowserRouter into it.
+    ```
+    import { BrowserRouter } from 'react-router-dom';
+    ```
+1. Inside the ReactDOM.render method, wrap the App component with BrowserRouter.
+    ```
+    ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+    ```
+1. In App.js, replace the ```<Main />``` component with two Routes.
+    ```
+    <Route exact path="/" component={Main} />
+    <Route path="/play" component={Game} />
+    ```
+1. Create a new component (in the components directory) named Game. For now, just make it render some placeholder text.
+    ```
+    import React from 'react';
+
+    function Game(){
+        return (
+        <div>Game here</div>
+        )
+    }
+
+    export default Game;
+    ```
+1. Import the Game component into App.
+    ```
+    import Game from '../components/Game';
+    ```
+1. Start up your development server if it's not running already. You should see the same view as before, with the Mathificent header and the two dropdowns.
+1. Manually change the URL in the browser address bar to http://localhost:3000/play. The new game component will render where the Main component was, as shown in the following figure:
+1. Use your browser's "Back" button to return to the homepage route.
+1. Try to change the selected option in one of the dropdown menus. You'll  get a screen full of errors, as shows here: <img src="missing-props-errors.jpg"> 
+1. The reason for this error is that we're no longer passing the state data into the Main component. Let's fix that.
+1. Replace the ```component``` attribute in the Main Route with a render attribute that defines a function and passes the state variables into it.
+    ```<Route path="/play"
+              component={()=>
+              <Main operation = {operation}
+                    setOperation = {setOperation}
+                    maxNumber = {maxNumber}
+                    setMaxNumber = {setMaxNumber} />}>} />
+    ```
+1. Return to your browser and you should be able to change the currently selected option and see the changes working correctly.
+The next thing we need to do is to make the button change the route to the game and pass in the current operation and maxNumber values.
+1. Open the Main component and pass maxNumber and operation to the PlayButton component as props.
+    ```<PlayButton
+            operation={props.operation}
+            maxNumber={props.maxNumber} />
+    ```
+1. Open PlayButton.js and import Link from react-router-dom.
+    ```import {Link} from 'react-router-dom';```
+1. Change the ```<Button>``` element to a ```<Link>``` element and add a ```to``` attribute. The ```to``` attribute indicates what the location property should be set to when the ```<Link>``` element is clicked. So, set the value of the ```to``` attribute to ```/play```.
+1. In your browser, try clicking on the button, and the currently-displayed component should change from ```<Main>``` to ```<Game>```.
+1. Update the Route for ```<Game>``` in the App component so that it passes operation and maxNumber as props.
+    ```      
+    <Route path="/play"
+        render={()=>{
+          return(<Game  operation = {operation}
+                        maxNumber = {maxNumber}
+                  />);}
+                } />
+    ```
+1. Import ```<Link>``` into the Game component, then add a button for changing back to ```<Main>```.
+    ```
+    <Link className="btn btn-success" to="/">
+    Change Game
+    </Link>
+    ```
+Congratulations! You now have routing set up, and we're ready to implement the actual logic of the game.
+
+Here's what the game will look like when it's complete:
+
+Can you identify from looking at this screenshot which individual components we'll need to build? We'll need the number buttons, the clear button (which might eventually be the same component that we use for the number buttons), the score output, and the timer.
+1. Create a NumberButton component, a ClearButton component, a Score component, and a Timer component and just put placeholder text into each for now.
+1. Include each of these new components into Game.
+1. In the return statement of Game, place a Timer, Score, 10 NumberButtons, and a Clear button. Use <br /> elements to create line breaks in the correct places.
+    ```
+    <div>
+        <Score />
+        <Timer /><br />
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br/>
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br />
+        <NumberButton />
+        <NumberButton />
+        <NumberButton /><br />
+        <NumberButton />
+        <NumberButton />
+        <ClearButton />
+
+        <Link className="btn btn-success" to="/">Change Game</Link>
+    </div>
+    ```
+Your app should now look something like the following:
+<img src="start-of-game.png">
+1. Make the NumberButton component render a button and accept a prop named value:
+    ```
+    <button className="btn btn-success">
+            {props.value}
+    </button>
+    ```
+1. Make the ClearButton component output a button:
+    ```
+    <button className="btn btn-success">
+            Clear
+    </button>
+    ```
 
 Next Steps
 

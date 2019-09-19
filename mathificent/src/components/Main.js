@@ -25,7 +25,9 @@ function Main(props){
                          values = {numbers} />
                          
             <ScoreOutputBox />
-            <PlayButton />
+            <PlayButton
+                operation={props.operation}
+                maxNumber={props.maxNumber} />
         </div>
     )
 }
