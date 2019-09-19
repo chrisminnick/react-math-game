@@ -444,6 +444,7 @@ Your app should now look something like the following:
 1. 
 Next Steps
 
+- Add the routes
 - Make the game screen
 - Make the game work
 - 

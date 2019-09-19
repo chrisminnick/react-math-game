@@ -1,38 +1,34 @@
-export function checkAnswer(value,operator) {
-    var correctAnswer = getCorrectAnswer(operator);
-    var userAnswer;
-    //var score = parseInt($('#score > output').html());
-    userAnswer = value;
-    console.log('correctAnswer:' + correctAnswer);
-    console.log('user answer:' + userAnswer);
-    
-    if (value === 'clear') {
-      // if (!soundMuted) {
-      //   clearSound.play();
-      // }
-      //$('#solution>output').html('');
-    } else if (correctAnswer !== userAnswer) { // If already answered don't change displayed value
-      // if (!soundMuted) {
-      //   clickSound.play();
-      // }
-      if (userAnswer === 0) {
-        //$('#solution>output').html(value); // don't include leading zeroes
-      } else {
-        //$('#solution>output').html($('#solution>output').html() + value);
-      }
-      //userAnswer = parseInt($('#solution>output').html());
+export function checkAnswer(input,correctAnswer,userAnswer) {
+ 
+  console.log('user answer:' + userAnswer);
+  console.log('input: ' + input);
+  console.log('correct answer: ' + correctAnswer);
+
+  if (userAnswer === 'clear') {
+    input = '';
+    return input;
+  }
+  
+  if (correctAnswer !== userAnswer) { // If already answered don't change displayed value
+
+    if (userAnswer === 0) {
+      return input; // don't include leading zeroes
     } else {
-      return false; // Already got right answer. Don't check it again.
-    }
-    if (correctAnswer === userAnswer) {
-      // if (!soundMuted) {
-      //   rightSound.load();
-      //   rightSound.play();
-      // }
-      //setScore(score++);
-      //$('#score > output').html(score.toString());
+      //props.setInput(String(userAnswer)+ String(input));
       
+      input = String(userAnswer)+ String(input);
+      console.log('ending input: ' + input);
+      return input;
     }
+
+  } else {
+    return false; // Already got right answer. Don't check it again.
+  }
+  if (correctAnswer === Number(input)) {
+
+    input = '';
+    return input;
+    
   }
   
 function getCorrectAnswer(oper) {
@@ -49,4 +45,4 @@ function getCorrectAnswer(oper) {
         return num1 / num2;
     }
   }
-
+}
