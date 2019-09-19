@@ -413,7 +413,35 @@ Your app should now look something like the following:
             Clear
     </button>
     ```
-
+1. Add padding and margins to the buttons in both the ClearButton component and the NumberButton component using the BootStrap p-4 and b-2 classes.
+    ```
+    <button className="btn btn-success p-4 m-2>
+    ```
+    Next, we'll update the Game component so that we can output the NumberButtons in a more efficient way by using an array and the Array.map method.
+1. In the Game component, use the following code to create an array of numbers and then loop through that array to create an array of NumberButton components. This should go inside the function, but before the return statement.
+    ```
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const numberButtons = numbers.map((number) =>
+        <NumberButton value={number} />
+    );
+    ```
+1. In the return statement, replace the list of NumberButton elements with {numberButtons}. This will cause the items in the array to be rendered individually, resulting in 10 buttons being output.
+1. Start your development server (using npm start) if it's not already running. In your browser, notice that 10 NumberButtons are now being rendered, but they're all in a single row.
+1. Create a style object in the Game component called gridStyle and assign a fixed width to the grid and position it in the center of the screen using auto left and right margins.
+    ```
+    const gridStyle = {
+        width: "300px",
+        margin: "0 auto"
+    }
+    ```
+1. Use a style attribute to apply the gridStyle properties to the div surrounding the buttons.
+    ```
+    <div style={gridStyle}>
+        {numberButtons}
+        <ClearButton />
+    </div>
+    ```
+1. 
 Next Steps
 
 - Make the game screen
