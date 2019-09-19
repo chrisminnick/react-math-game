@@ -1,9 +1,10 @@
 import React from 'react';
 function NumberButton(props){
     return(
-        <button className="btn btn-success p-4 m-2">
-            {props.value}
-        </button>
+        <input type="button"
+               className="btn btn-success p-4 m-2"
+               value={props.value}
+               onClick={(e)=>{e.preventDefault();props.handleClick(props.value)}}/>
     );
 }
 export default NumberButton;
