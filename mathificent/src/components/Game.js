@@ -12,7 +12,7 @@ function Game(props){
     const [input, setInput] = useState(0);
     const [score, setScore] = useState(0);
     const [userInput, setUserInput] = useState(0);
-    const [correctAnswer, setCorrectAnswer] = useState(0);
+    const [correctAnswer, setCorrectAnswer] = useState(26);
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const numberButtons = numbers.map((number) =>
