@@ -263,9 +263,9 @@ As your app starts to get more complex, it can be helpful to start organizing it
     <Main {...state} />
     ```
 1. Update the Main function component to receive props as a parameter.
-```
-    function Main(props){
-```
+    ```
+        function Main(props){
+    ```
 1. Pass the correct props variables and functions to the SelectInput components.
 function Main(props){
     ```
@@ -289,8 +289,7 @@ function Main(props){
 1. In App.js, output the the value of both the currently selected operation and the maximum number, so that we can test whether the state is being updated correctly.
 
 Next Steps
-- Add state
-- Update the state with hooks?
+
 - Add the routes
 - Make the game screen
 - Make the game work
