@@ -7,7 +7,7 @@ import Main from '../components/Main';
 import Game from '../components/Game';
 
 function App() {
-  const [operation, setOperation] = useState('addition');
+  const [operation, setOperation] = useState('+');
   const [maxNumber, setMaxNumber] = useState(0);
 
   return (

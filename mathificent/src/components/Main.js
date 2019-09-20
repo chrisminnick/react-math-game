@@ -4,10 +4,7 @@ import ScoreOutputBox from './ScoreOutputBox';
 import PlayButton from './PlayButton';
 
 function Main(props){
-    const operations = ["Addition",
-                      "Multiplication",
-                      "Division",
-                      "Subtraction"];
+    const operations = ["+","x","/","-"];
     let numbers = [];
     for (let number = 0;number<=100;number++){
         numbers.push(number);

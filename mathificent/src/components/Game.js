@@ -4,7 +4,7 @@ import NumberButton from './NumberButton';
 import ClearButton from './ClearButton';
 import Timer from './Timer';
 import Score from './Score';
-import {checkAnswer} from '../helpers/gameplay';
+import {checkAnswer,getRandNumbers,getCorrectAnswer} from '../helpers/gameplay';
 import UserInput from './UserInput';
 
 function Game(props){
@@ -12,10 +12,28 @@ function Game(props){
     const [input, setInput] = useState('');
     const [score, setScore] = useState(0);
     const [userInput, setUserInput] = useState('');
-    const [correctAnswer, setCorrectAnswer] = useState(26);
-    
-    let displayAnswer = String(userInput) + checkAnswer(input,correctAnswer,userInput);
+    const [operands, setOperands] = useState({num1:1,num2:1});
+    const [correctAnswer, setCorrectAnswer] = useState(getCorrectAnswer(props.operation,operands.num1,operands.num2));
+    let newRandNums;
+    let newCorrectAnswer;
 
+
+    let displayAnswer = checkAnswer(input,correctAnswer,userInput);
+    if (displayAnswer==='correct'){
+        setInput('');
+        setUserInput('');
+        setScore(score+1);
+
+        newRandNums = getRandNumbers(props.operator,0, props.maxNumber)
+
+        setOperands(newRandNums);
+
+        newCorrectAnswer = getCorrectAnswer(props.operation,newRandNums.num1,newRandNums.num2);
+        
+        setCorrectAnswer(newCorrectAnswer);
+
+        console.log("operands: " + operands);
+    }
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const numberButtons = numbers.map((number) =>
         <NumberButton value={number} prevValue = {input} key={number} handleClick = {setInput}/>
@@ -30,17 +48,16 @@ function Game(props){
     <div>
         <Link className="btn btn-success" to="/">Change Game</Link>
 
-        <Score />
+        <Score score={score}/>
         <Timer />
         <div>
-            1+1 = <UserInput input = {displayAnswer} />
+            {operands.num1} {props.operation} {operands.num2} = <UserInput input = {displayAnswer} />
         </div>
         <div style={gridStyle}>
         {numberButtons}
         <ClearButton handleClick = {setInput}/>
 
         </div>
-
     </div>
     )
 }
