@@ -21,15 +21,13 @@ export function checkAnswer(input,correctAnswer,userAnswer) {
       return input;
     }
 
-  } else {
-    return false; // Already got right answer. Don't check it again.
-  }
-  if (correctAnswer === Number(input)) {
-
-    input = '';
-    return input;
+  } else { //answer is correct
     
+        input = '';
+        return input;
+
   }
+
   
 function getCorrectAnswer(oper) {
     var num1 = 2;

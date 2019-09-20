@@ -9,10 +9,13 @@ import UserInput from './UserInput';
 
 function Game(props){
 
-    const [input, setInput] = useState(0);
+    const [input, setInput] = useState('');
     const [score, setScore] = useState(0);
-    const [userInput, setUserInput] = useState(0);
+    const [userInput, setUserInput] = useState('');
     const [correctAnswer, setCorrectAnswer] = useState(26);
+    
+    let displayAnswer = String(userInput) + checkAnswer(input,correctAnswer,userInput);
+
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const numberButtons = numbers.map((number) =>
         <NumberButton value={number} prevValue = {input} key={number} handleClick = {setInput}/>
@@ -21,7 +24,6 @@ function Game(props){
         width: "300px",
         margin: "0 auto"
     }
-    let displayAnswer = String(userInput) + checkAnswer(input,correctAnswer,userInput);
 
     console.log('display answer: ' + displayAnswer);
     return (
@@ -35,7 +37,7 @@ function Game(props){
         </div>
         <div style={gridStyle}>
         {numberButtons}
-        <ClearButton />
+        <ClearButton handleClick = {setInput}/>
 
         </div>
 
