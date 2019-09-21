@@ -11,24 +11,22 @@ function Game(props){
 
     const [input, setInput] = useState('');
     const [score, setScore] = useState(0);
-    const [userInput, setUserInput] = useState('');
     const [operands, setOperands] = useState({num1:1,num2:1});
     const [correctAnswer, setCorrectAnswer] = useState(getCorrectAnswer(props.operation,operands.num1,operands.num2));
-    let newRandNums;
-    let newCorrectAnswer;
 
 
-    let displayAnswer = checkAnswer(input,correctAnswer,userInput);
+
+    let displayAnswer = checkAnswer(input,correctAnswer);
     if (displayAnswer==='correct'){
         setInput('');
-        setUserInput('');
+        //setUserAnswer('');
         setScore(score+1);
 
-        newRandNums = getRandNumbers(props.operator,0, props.maxNumber)
+        let newRandNums = getRandNumbers(props.operator,0, props.maxNumber)
 
         setOperands(newRandNums);
 
-        newCorrectAnswer = getCorrectAnswer(props.operation,newRandNums.num1,newRandNums.num2);
+        let newCorrectAnswer = getCorrectAnswer(props.operation,newRandNums.num1,newRandNums.num2);
         
         setCorrectAnswer(newCorrectAnswer);
 

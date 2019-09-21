@@ -1,28 +1,20 @@
-export function checkAnswer(input,correctAnswer,userAnswer) {
+export function checkAnswer(input,correctAnswer) {
  
-  console.log('user answer:' + userAnswer);
   console.log('input: ' + input);
   console.log('correct answer: ' + correctAnswer);
 
-  let fullAnswer = String(userAnswer)+String(input);
+  let fullAnswer = String(input);
 
   console.log("full answer: " + fullAnswer);
 
-  if (userAnswer === 'clear') {
-    input = '';
-    return input;
-  }
+
   
   if (parseInt(fullAnswer) !== correctAnswer) { 
-
-    if (userAnswer === 0) {
-      return input; // don't include leading zeroes
-    } else {      
+     
       return fullAnswer;
-    }
+    
 
   } else { //answer is correct
-    
 
         return 'correct';
 
