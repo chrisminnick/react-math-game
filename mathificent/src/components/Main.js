@@ -1,12 +1,11 @@
 import React from 'react';
 import SelectInput from './SelectInput';
-import ScoreOutputBox from './ScoreOutputBox';
 import PlayButton from './PlayButton';
 
 function Main(props){
     const operations = ["+","x","/","-"];
     let numbers = [];
-    for (let number = 0;number<=100;number++){
+    for (let number = 1;number<=100;number++){
         numbers.push(number);
     }
     return(
@@ -21,7 +20,6 @@ function Main(props){
                          label = "Maximum Number" 
                          values = {numbers} />
                          
-            <ScoreOutputBox />
             <PlayButton
                 operation={props.operation}
                 maxNumber={props.maxNumber} />

@@ -14,10 +14,8 @@ function App() {
     <div className="App">
       <Header />
       <h1>Mathificent</h1>
-      <ul>
-        <li>Current operation: {operation}</li>
-        <li>Current maxNumber: {maxNumber}</li>
-      </ul>
+      <p>Select your operator and max number to practice your arithmetic!</p>
+
       <Route exact path="/"
         render={()=>{
           return(<Main  operation = {operation}

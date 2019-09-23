@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
 import NumberButton from './NumberButton';
 import ClearButton from './ClearButton';
 import Timer from './Timer';
@@ -22,7 +21,7 @@ function Game(props){
         //setUserAnswer('');
         setScore(score+1);
 
-        let newRandNums = getRandNumbers(props.operator,0, props.maxNumber)
+        let newRandNums = getRandNumbers(props.operation,0, props.maxNumber)
 
         setOperands(newRandNums);
 
@@ -44,8 +43,6 @@ function Game(props){
     console.log('display answer: ' + displayAnswer);
     return (
     <div>
-        <Link className="btn btn-success" to="/">Change Game</Link>
-
         <Score score={score}/>
         <Timer />
         <div>
